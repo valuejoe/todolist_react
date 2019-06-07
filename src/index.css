@@ -1,0 +1,118 @@
+body {
+  background-color: #E1E1E1;
+}
+
+.Task_title {
+  margin-right: 50px;
+  margin-left: 15px;
+  padding-bottom: 5px;
+}
+
+.Task_input {
+  border: none;
+  background-color: #F2F2F2;
+  margin-left: 15px;
+}
+.task_add {
+  background-color:#FFFFFF  ;
+  width:400px;
+  height: 40px;
+  margin-bottom: 15px;
+  border:none;
+  border-radius: 0.25rem;
+}
+
+.material-icons.taskAddText, .taskAddText{
+  float:left;
+  color:#C8C8C8;
+}
+
+.task_content {
+  padding:10px;
+  background-color: #F2F2F2;
+  width:400px;
+  margin-bottom: 5px;
+  border-radius: 0.25rem;
+  
+}
+
+.task {
+  width: 400px;
+  margin: auto;
+	height: auto;
+}
+
+.title {
+  margin-bottom: 5px;
+}
+
+.Task_nav .nav-ul {
+    list-style-type: none;
+    overflow: hidden;
+    background-color: #4A90E2;
+    text-align: center;
+  }
+  
+  .Task_nav .nav-li {
+    width: 220px;
+    display: inline-block;
+  }
+  
+  .Task_nav .nav-li a {
+    display: block;
+    color: #00408B;
+    text-align: center;
+    text-decoration: none;
+    
+  }
+  
+  .Task_nav .nav-li .active {
+    color:white;
+    position: relative;
+    text-align: center
+  }
+  
+  .Task_nav .nav-li .active:after {
+    content:'';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0px;
+    width: 160px;
+    border-bottom: 5px solid #00408B;
+  }
+
+  .Task_nav .nav-li a:hover{
+    color:white;
+  }
+
+.material-icons, .material-icons-outlined { 
+  border:none;
+
+}
+
+.material-icons.positive_right, .material-icons-outlined.positive_right {
+  float:right;
+  margin-right: 15px;
+  outline:none;
+  background-color: #F2F2F2;
+
+}
+
+.material-icons.positive_left{
+  float:left;
+  outline:none;
+  background-color: #F2F2F2;
+  
+}
+
+.star_Click {
+  color:#F5A623;
+  float:right;
+}
+
+.edit_Click {
+  color:#4A90E2;
+}
+
+
