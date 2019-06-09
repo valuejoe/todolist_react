@@ -27,13 +27,11 @@ class TaskSummary extends Component {
             this.props.task.id,
             this.props.index,
             this.props.collection);
-
-        // console.log('click complete');
     }
 
     render() {
         const task = this.props.task;
-        // console.log(task)
+        console.log(task)
         const StarIcon = () => {
             if (!task.star) {
                 return (<button className="material-icons positive_right md-24 " onClick={this.ClickStar}>star_border</button>)

@@ -1,41 +1,74 @@
 import React, { Component } from 'react'
+import TaskForm from './TaskForm'
+import { connect } from 'react-redux'
+import { addTask } from '../../store/actions/taskActions'
 
 class AddTask extends Component {
-    state = {
+    constructor(props) {
+        super(props)
+        this.state = {
+            show: false,
+            title:'',
+            comment:''
+        };
 
     }
+
+    onClick = () => {
+        this.setState({ show: !this.state.show })
+    }
+    
+    handleSubmit = (e) => {
+        this.setState({ show: !this.state.show })
+        e.preventDefault();
+        this.props.addTask(this.state);
+    }
+
+    handleChange = (e) => {
+        this.setState({
+            [e.target.id]: e.target.value
+        })
+    }
+
     render() {
+        // console.log(this.state)
+        const { show } = this.state;
         return (
-            <div className="task">
-                <button type="text" className="task_add" >
-                    <i className="material-icons taskAddText">add</i>
+            <React.Fragment>
+                {show ? (
+                    <form className="task" onSubmit={this.handleSubmit}>
+                        <div className="task_content">
+                            <input id="title" onChange={this.handleChange} type="text" placeholder="Type somthing here" />
+                            
+                            <div>
+                                <p>
+                                    <i className="material-icons positive_left">insert_comment</i>
+                                    comment
+                                </p>
+                                <input id="comment" onChange={this.handleChange} type="text" />
+                            </div>
+                            <button onClick={this.onClick}>cancel</button>
+                            <button onClick={this.handleChange}>submit</button>
+                        </div>
+                    </form>
+                ) : (
+                        <div className="task">
+                            <button type="text" className="task_add" onClick={this.onClick} >
+                                <i className="material-icons taskAddText">add</i>
+                                <span className="taskAddText">Add Task</span>
+                            </button>
+                        </div>
 
-                    <span className="taskAddText">
-                        add
-                    </span>
-
-                </button>
-
-                <div className="task_content">
-                    <div id="edit_content">
-                        <p>
-                            <i className="material-icons positive_left">date_range</i>
-                            Deadline
-                        </p>
-                        <input type="month" />
-                        <input type="time" />
-                    </div>
-                    <div>
-                        <p>
-                            <i className="material-icons positive_left">insert_comment</i>
-                            comment
-                        </p>
-                        <input type="text" />
-                    </div>
-                </div>
-            </div>
+                    )}
+            </React.Fragment>
         )
     }
 }
 
-export default AddTask;
+const MapDispatchToProps = (dispatch) => {
+    return {
+        addTask:(task) => dispatch(addTask(task))
+    }
+}
+
+export default connect(null,MapDispatchToProps)(AddTask);
