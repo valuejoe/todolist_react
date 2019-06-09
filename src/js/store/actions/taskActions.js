@@ -26,10 +26,10 @@ export const sortableList = (oldIndex, newIndex, collection) => {
     }
 }
 
-export const deleteTask = (id) => {
+export const deleteTask = (id, index, collection) => {
     return {
         type: 'DELETE_TASK',
-        id
+        payload: {id, index, collection}
     }
 }
 

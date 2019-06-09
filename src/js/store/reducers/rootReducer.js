@@ -46,11 +46,15 @@ const rootReducer = (state = initState, action) => {
                 tasks: REORDER_LIST_FUNCTION(state, action).tasks
             }
         case 'ADD_TASK':
-                
                 return {
                     ...state,
                     id: state.id + 1,
                     tasks: ADD_TASK_FUNCTION(state, action).tasks
+                }
+        case 'DELETE_TASK':
+                return {
+                    ...state,
+                    tasks: DELETE_TASK_FUNCTION(state, action).tasks
                 }
         default:
             return state
@@ -58,6 +62,17 @@ const rootReducer = (state = initState, action) => {
 }
 
 export default rootReducer;
+
+const DELETE_TASK_FUNCTION = (state, action) => {
+    let newCollections = [...state.tasks]
+    newCollections[action.payload.collection] = newCollections[action.payload.collection].filter(task => {
+        return task.id !== action.payload.id
+    })
+    console.log(newCollections[action.payload.collection])
+    return {
+        tasks:newCollections
+    }
+}
 
 const CLICK_STAR_FUNCTION = (state, action) => {
     let newCollections = [...state.tasks]

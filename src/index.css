@@ -2,6 +2,10 @@ body {
   background-color: #E1E1E1;
 }
 
+p {
+  margin-top:10px;
+  margin-bottom: 0;
+}
 .Task_title {
   margin-right: 50px;
   margin-left: 15px;
@@ -103,7 +107,6 @@ body {
   float:left;
   outline:none;
   background-color: #F2F2F2;
-  
 }
 
 .star_Click {

@@ -47,8 +47,8 @@ class AddTask extends Component {
                                 </p>
                                 <input id="comment" onChange={this.handleChange} type="text" />
                             </div>
-                            <button onClick={this.onClick}>cancel</button>
-                            <button onClick={this.handleChange}>submit</button>
+                            <button onClick={this.onClick} >cancel</button>
+                            <button type="submit" onClick={this.handleChange}>Add</button>
                         </div>
                     </form>
                 ) : (

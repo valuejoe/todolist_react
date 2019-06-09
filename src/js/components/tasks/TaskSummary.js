@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { clickStar, clickEdit, clickComplete } from '../../store/actions/taskActions';
+import { clickStar, clickEdit, clickComplete, deleteTask } from '../../store/actions/taskActions';
 import { connect } from 'react-redux';
 import AddTask from './AddTask'
 
@@ -11,7 +11,7 @@ class TaskSummary extends Component {
             this.props.index,
             this.props.collection,
             this.props.task.star
-            );
+        );
     }
 
     ClickEdit = () => {
@@ -19,7 +19,7 @@ class TaskSummary extends Component {
             this.props.task.id,
             this.props.index,
             this.props.collection
-            );
+        );
     }
 
     ClickComplete = () => {
@@ -29,9 +29,16 @@ class TaskSummary extends Component {
             this.props.collection);
     }
 
+    ClickDelete = () => {
+        this.props.deleteTask(
+            this.props.task.id,
+            this.props.index,
+            this.props.collection
+        )
+    }
+
     render() {
         const task = this.props.task;
-        console.log(task)
         const StarIcon = () => {
             if (!task.star) {
                 return (<button className="material-icons positive_right md-24 " onClick={this.ClickStar}>star_border</button>)
@@ -41,7 +48,7 @@ class TaskSummary extends Component {
         }
 
         const EditIcon = () => {
-            
+
             if (!task.edit) {
                 return (<button className="material-icons-outlined positive_right md-24 " onClick={this.ClickEdit}>edit</button>)
             } else {
@@ -57,29 +64,50 @@ class TaskSummary extends Component {
             }
         }
 
+        const isEditMode = () => {
+            return (
+                task.edit ? (
+                    <div className="task_content">
+                        {CheckBox(task)}
+                        <span className="Task_title">{task.title}</span>
+                        {EditIcon(task)}
+                        {StarIcon(task)}
+                        
+                        <div>
+                            <p>
+                                <i className="material-icons positive_left">insert_comment</i>
+                                comment
+                            </p>
+                            <input id="comment" onChange={this.handleChange} type="text" />
+                        </div>
+                        <button onClick={this.onClick} >cancel</button>
+                        <button type="submit" onClick={this.handleChange}>submit</button>
+                    </div>
+                    
+                ):(
+                    <div className="task_content">
+                        {CheckBox(task)}
+                        <span className="Task_title">{task.title}</span>
+                        <button className="material-icons positive_right md-24" onClick={this.ClickDelete}>delete</button>
+                        {EditIcon(task)}
+                        {StarIcon(task)}
+                    </div>
+                )
+            )
+        }
+
         return (
             <div className="task">
                 {task.completed ? (
                     <div className="task_content">
                         {CheckBox(task)}
                         <span className="Task_title">{task.title}</span>
-
                     </div>
                 ) : (
-                        <div className="task_content">
-                            {CheckBox(task)}
-                            <span className="Task_title">{task.title}</span>
-                            {EditIcon(task)}
-                            {StarIcon(task)}
-                        </div>
+                    <React.Fragment>
+                    {isEditMode(task)}
+                    </React.Fragment>
                     )}
-
-                {/* <div className="task_content">
-                {CheckBox(task)}
-                <span className="Task_title">{task.title}</span>
-                {EditIcon(task)}
-                {StarIcon(task)}
-            </div> */}
 
             </div>
         )
@@ -91,7 +119,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
         clickStar: (id, index, collection, star) => dispatch(clickStar(id, index, collection, star)),
         clickEdit: (id, index, collection) => dispatch(clickEdit(id, index, collection)),
-        clickComplete: (id, index, collection) => dispatch(clickComplete(id, index, collection))
+        clickComplete: (id, index, collection) => dispatch(clickComplete(id, index, collection)),
+        deleteTask: (id, index, collection) => dispatch(deleteTask(id, index, collection))
     }
 }
 
