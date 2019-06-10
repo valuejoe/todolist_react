@@ -106,7 +106,7 @@ class TaskSummary extends Component {
                                 <i className="material-icons positive_left">insert_comment</i>
                                 comment
                             </p>
-                            <input id="comment" className="Task_title Task_input" value={this.state.comment} onChange={this.editChange} type="text" />
+                            <input id="comment" className="Task_input comment_input" value={this.state.comment} onChange={this.editChange} type="text" />
                         </div>
                     </div>
 

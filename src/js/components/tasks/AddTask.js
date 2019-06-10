@@ -36,19 +36,19 @@ class AddTask extends Component {
             <React.Fragment>
                 {show ? (
                     <form className="task" onSubmit={this.handleSubmit}>
-                        <div className="task_content">
-                            <input id="title" onChange={this.handleChange} type="text" placeholder="Type somthing here" />
+                        <div className="addTask">
+                            <input id="title" className="Task_input addTitle_Input" onChange={this.handleChange} type="text" placeholder="Type somthing here" />
                             
-                            <div>
+                            <div className="addTask_comment">
                                 <p>
                                     <i className="material-icons positive_left">insert_comment</i>
                                     comment
                                 </p>
-                                <input id="comment" onChange={this.handleChange} type="text" />
+                                <input id="comment" className="Task_input comment_input" onChange={this.handleChange} type="text" placeholder="Type somthing here" />
                             </div>
-                            <button type="button" onClick={this.onClick} >cancel</button>
-                            <button type="submit" onClick={this.handleChange}>Add</button>
                         </div>
+                        <button type="button" className="addTask_button cancel_button" onClick={this.onClick} >x Cancel</button>
+                        <button type="submit" className="addTask_button add_button" onClick={this.handleChange}>Add</button>
                     </form>
                 ) : (
                         <div className="task">

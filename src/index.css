@@ -5,15 +5,54 @@ body {
 p {
   margin-top:10px;
   margin-bottom: 0;
+  margin-left:8px;
 }
+
+.addTask {
+  padding:10px;
+  background-color: #F2F2F2;
+  width:400px;
+  border-radius: 0.25rem;
+}
+
+.addTask_button.add_button {
+  background-color: #4A90E2;
+  border: 0;
+  color: #FFFFFF;
+}
+
+.addTask_button.cancel_button {
+  background-color: white;
+  border: 0;
+  color: #D0021B;
+}
+
+.addTask_button {
+  padding:0;
+  width: 200px;
+  margin-bottom:15px;
+  height: 30px;
+}
+.addTask_comment {
+  margin-bottom: 10px;
+}
+
 .Task_title {
   margin-right: 40px;
   margin-left: 15px;
   padding-bottom: 5px;
 }
-
+.Task_input.addTitle_Input {
+  width:350px;
+}
+.Task_input.comment_input {
+  width:350px;
+}
 .Task_input {
-  border: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-color: rgb(165, 181, 199);
   background-color: #F2F2F2;
   margin-left: 15px;
 }
