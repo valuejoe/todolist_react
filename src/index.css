@@ -7,7 +7,7 @@ p {
   margin-bottom: 0;
 }
 .Task_title {
-  margin-right: 50px;
+  margin-right: 40px;
   margin-left: 15px;
   padding-bottom: 5px;
 }
@@ -97,7 +97,7 @@ p {
 
 .material-icons.positive_right, .material-icons-outlined.positive_right {
   float:right;
-  margin-right: 15px;
+  margin-right: 0px;
   outline:none;
   background-color: #F2F2F2;
 

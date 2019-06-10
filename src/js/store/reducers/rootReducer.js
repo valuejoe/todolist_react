@@ -3,15 +3,15 @@ import arrayMove from 'array-move';
 const initState = {
     tasks: [
         [
-            { id: 1, star: true, edit: false, title: '寫程式', completed: false },
-            { id: 4, star: true, edit: false, title: '屁屁', completed: false }
+            { id: 1, star: true, edit: false, title: '寫程式', completed: false, comment:'寫程式寫到掛' },
+            { id: 4, star: true, edit: false, title: '休息五十分鐘', completed: false, comment:'寫程式寫到掛'}
         ],
         [
-            { id: 2, star: false, edit: false, title: '買午餐', completed: false },
-            { id: 5, star: false, edit: false, title: '買電腦', completed: false }
+            { id: 2, star: false, edit: false, title: '買午餐', completed: false, comment:'吃經濟餐' },
+            { id: 5, star: false, edit: false, title: '買電腦', completed: false, comment:'msi ps42' }
         ],
         [
-            { id: 3, star: false, edit: false, title: '玩遊戲', completed: true }
+            { id: 3, star: false, edit: false, title: '玩遊戲', completed: true, comment:'跟朋友玩lol' }
         ]
     ],
     id: 6
@@ -56,12 +56,37 @@ const rootReducer = (state = initState, action) => {
                     ...state,
                     tasks: DELETE_TASK_FUNCTION(state, action).tasks
                 }
+        case 'UPDATE_TASK':
+            return {
+                ...state,
+                tasks: UPDATE_TASK_FUNCTION(state, action).tasks
+            }
+                
         default:
             return state
     }
 }
 
 export default rootReducer;
+
+const UPDATE_TASK_FUNCTION =(state, action) => {
+    let newCollections = [...state.tasks]
+    newCollections[action.payload.collection] = newCollections[action.payload.collection].map(
+        task => {
+            if(task.id === action.payload.id) {
+                return {
+                    ...task,
+                    title:action.payload.state.title,
+                    comment:action.payload.state.comment
+                }
+            }
+            return task
+        }
+    )
+    return {
+        tasks:newCollections
+    }
+}
 
 const DELETE_TASK_FUNCTION = (state, action) => {
     let newCollections = [...state.tasks]
@@ -180,7 +205,7 @@ const REORDER_LIST_FUNCTION = (state, action) => {
 
 const ADD_TASK_FUNCTION = (state, action) => {
     let newCollections = [...state.tasks]
-    let newTask = {id: state.id, star: false, edit: false, title: action.payload.title, completed: false}
+    let newTask = {id: state.id, star: false, edit: false, title: action.payload.title, completed: false, comment: action.payload.comment}
     newCollections[1] = [newTask, ...newCollections[1]]
     return {
         tasks: newCollections

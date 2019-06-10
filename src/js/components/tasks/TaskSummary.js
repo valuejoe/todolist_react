@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
-import { clickStar, clickEdit, clickComplete, deleteTask } from '../../store/actions/taskActions';
+import { clickStar, clickEdit, clickComplete, deleteTask, updateTask } from '../../store/actions/taskActions';
 import { connect } from 'react-redux';
 import AddTask from './AddTask'
 
 class TaskSummary extends Component {
+
+    state = {
+        title: this.props.task.title,
+        comment: this.props.task.comment
+    }
 
     ClickStar = () => {
         this.props.clickStar(
@@ -37,6 +42,22 @@ class TaskSummary extends Component {
         )
     }
 
+    editChange = (e) => {
+        this.setState({
+            [e.target.id]: e.target.value
+        })
+    }
+    _handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+          console.log(e.target.value);
+        }
+        this.props.updateTask(
+            this.props.task.id,
+            this.props.index,
+            this.props.collection,
+            this.state)
+      }
+
     render() {
         const task = this.props.task;
         const StarIcon = () => {
@@ -64,35 +85,40 @@ class TaskSummary extends Component {
             }
         }
 
+        const Delete = () => {
+            return (
+                <button className="material-icons positive_right md-24" onClick={this.ClickDelete}>delete</button>
+            )
+        }
+
         const isEditMode = () => {
             return (
                 task.edit ? (
                     <div className="task_content">
                         {CheckBox(task)}
-                        <span className="Task_title">{task.title}</span>
+                        <input id="title" className="Task_title Task_input"  onKeyDown={this._handleKeyDown} value={this.state.title} onChange={this.editChange} type="text"></input>
+                        <Delete />
                         {EditIcon(task)}
                         {StarIcon(task)}
-                        
+
                         <div>
                             <p>
                                 <i className="material-icons positive_left">insert_comment</i>
                                 comment
                             </p>
-                            <input id="comment" onChange={this.handleChange} type="text" />
+                            <input id="comment" className="Task_title Task_input" value={this.state.comment} onChange={this.editChange} type="text" />
                         </div>
-                        <button onClick={this.onClick} >cancel</button>
-                        <button type="submit" onClick={this.handleChange}>submit</button>
                     </div>
-                    
-                ):(
-                    <div className="task_content">
-                        {CheckBox(task)}
-                        <span className="Task_title">{task.title}</span>
-                        <button className="material-icons positive_right md-24" onClick={this.ClickDelete}>delete</button>
-                        {EditIcon(task)}
-                        {StarIcon(task)}
-                    </div>
-                )
+
+                ) : (
+                        <div className="task_content">
+                            {CheckBox(task)}
+                            <span className="Task_title">{task.title}</span>
+                            <Delete />
+                            {EditIcon(task)}
+                            {StarIcon(task)}
+                        </div>
+                    )
             )
         }
 
@@ -104,9 +130,9 @@ class TaskSummary extends Component {
                         <span className="Task_title">{task.title}</span>
                     </div>
                 ) : (
-                    <React.Fragment>
-                    {isEditMode(task)}
-                    </React.Fragment>
+                        <React.Fragment>
+                            {isEditMode(task)}
+                        </React.Fragment>
                     )}
 
             </div>
@@ -120,7 +146,8 @@ const mapDispatchToProps = (dispatch) => {
         clickStar: (id, index, collection, star) => dispatch(clickStar(id, index, collection, star)),
         clickEdit: (id, index, collection) => dispatch(clickEdit(id, index, collection)),
         clickComplete: (id, index, collection) => dispatch(clickComplete(id, index, collection)),
-        deleteTask: (id, index, collection) => dispatch(deleteTask(id, index, collection))
+        deleteTask: (id, index, collection) => dispatch(deleteTask(id, index, collection)),
+        updateTask: (id, index, collection,state) => dispatch(updateTask(id, index, collection,state))
     }
 }
 

@@ -39,3 +39,10 @@ export const addTask = (state) => {
         payload:state
     }
 }
+
+export const updateTask = (id, index, collection,state) => {
+    return {
+        type:'UPDATE_TASK',
+        payload:{id, index, collection,state}
+    }
+}

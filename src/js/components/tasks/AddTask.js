@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import TaskForm from './TaskForm'
 import { connect } from 'react-redux'
 import { addTask } from '../../store/actions/taskActions'
 
@@ -47,7 +46,7 @@ class AddTask extends Component {
                                 </p>
                                 <input id="comment" onChange={this.handleChange} type="text" />
                             </div>
-                            <button onClick={this.onClick} >cancel</button>
+                            <button type="button" onClick={this.onClick} >cancel</button>
                             <button type="submit" onClick={this.handleChange}>Add</button>
                         </div>
                     </form>
