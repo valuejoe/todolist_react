@@ -7,8 +7,8 @@ class AddTask extends Component {
         super(props)
         this.state = {
             show: false,
-            title:'',
-            comment:''
+            title: '',
+            comment: ''
         };
 
     }
@@ -16,7 +16,7 @@ class AddTask extends Component {
     onClick = () => {
         this.setState({ show: !this.state.show })
     }
-    
+
     handleSubmit = (e) => {
         this.setState({ show: !this.state.show })
         e.preventDefault();
@@ -37,12 +37,16 @@ class AddTask extends Component {
                 {show ? (
                     <form className="task" onSubmit={this.handleSubmit}>
                         <div className="addTask">
+                            <p>
+                                <i className="material-icons positive_left">add</i>
+                                Add Task
+                            </p>
                             <input id="title" className="Task_input addTitle_Input" onChange={this.handleChange} type="text" placeholder="Type somthing here" />
-                            
+
                             <div className="addTask_comment">
                                 <p>
                                     <i className="material-icons positive_left">insert_comment</i>
-                                    comment
+                                    Comment
                                 </p>
                                 <input id="comment" className="Task_input comment_input" onChange={this.handleChange} type="text" placeholder="Type somthing here" />
                             </div>
@@ -66,8 +70,8 @@ class AddTask extends Component {
 
 const MapDispatchToProps = (dispatch) => {
     return {
-        addTask:(task) => dispatch(addTask(task))
+        addTask: (task) => dispatch(addTask(task))
     }
 }
 
-export default connect(null,MapDispatchToProps)(AddTask);
+export default connect(null, MapDispatchToProps)(AddTask);

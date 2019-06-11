@@ -7,7 +7,7 @@ const TaskNav = () => {
         <div className="Task_nav">
             <ul className="nav-ul">
                 <li className="nav-li">
-                    <NavLink to="/" className="nav-link">My Tasks</NavLink>
+                    <NavLink exact activeClassName="nav-link active" to="/">My Tasks</NavLink>
                 </li>
                 <li className="nav-li">
                     <NavLink to="/inProcess" className="nav-link">In progress</NavLink>

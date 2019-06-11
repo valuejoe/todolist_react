@@ -8,6 +8,11 @@ p {
   margin-left:8px;
 }
 
+::placeholder {
+  color: #C8C8C8;
+  opacity: 0.8; /* Firefox */
+}
+
 .addTask {
   padding:10px;
   background-color: #F2F2F2;
