@@ -15,7 +15,7 @@ class Main extends Component {
                         <Route path='/mytask' component={ MyTask } />
                         <Route path='/inProcess' component={ Inprogress } />
                         <Route path='/completed' component={ Completed } />
-                        <Redirect from="/" to="/mytask"></Redirect> 
+                        {/* <Redirect from="/" to="/mytask"></Redirect> */}
                    </Switch>
                 </div>
             </HashRouter>
