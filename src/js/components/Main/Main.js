@@ -12,7 +12,7 @@ class Main extends Component {
                 <TaskNav />
                 <div>
                    <Switch>
-                        <Route path='/' component={ MyTask } />
+                        <Route exact path='/' component={ MyTask } />
                         <Route path='/inProcess' component={ Inprogress } />
                         <Route path='/completed' component={ Completed } />
                         {/* <Redirect from="/" to="/mytask"></Redirect> */}
