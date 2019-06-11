@@ -2,10 +2,13 @@
   "name": "webpack_react_init_2019",
   "version": "1.0.0",
   "description": "",
+  "homepage": "https://valuejoe.github.io/todolist_react/",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --open --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "keywords": [],
   "author": "",
@@ -27,6 +30,7 @@
   },
   "dependencies": {
     "array-move": "^2.1.0",
+    "gh-pages": "^2.0.1",
     "react": "^16.8.6",
     "react-addons-update": "^15.6.2",
     "react-dom": "^16.8.6",
