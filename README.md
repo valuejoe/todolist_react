@@ -1,4 +1,4 @@
-# 運用react及redux來寫簡易的todolist
+# 運用react及redux來寫todolist
 ###### todolist參考設計稿 [連結](https://valuejoe.github.io/todolist_react/)
 介面只有以電腦website方式設計，並無測試其他載具。
 ### 基本功能
