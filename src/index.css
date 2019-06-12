@@ -10,7 +10,7 @@ p {
 
 ::placeholder {
   color: #C8C8C8;
-  opacity: 0.8; /* Firefox */
+  opacity: 0.8; 
 }
 
 .addTask {
