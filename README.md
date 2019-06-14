@@ -1,5 +1,5 @@
 # 運用react及redux來寫todolist
-###### todolist參考設計稿 [連結](https://valuejoe.github.io/todolist_react/)
+###### todolist參考設計稿 [連結](https://hexschool.github.io/THE_F2E_Design/todolist/?fbclid=IwAR0hrbl2VHoCh5Unut_C8T1zvnNggHnN2in6NibLTfjbQA2gSJEGTgpBG-U)
 ### 基本功能
 -   Add Todo : 新增todo
 -   Delete Todo : 刪除todo
